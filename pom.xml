@@ -496,3 +496,13 @@
         </profile>
     </profiles>
 </project>
+
+<distributionManagement>
+  <repository>
+        <id>deployment</id
+        <name>Nexus Release Repository</name>
+        <url>http://54.146.195.1:8081/repository/maven/</url>
+ </repository>
+</distributionManagement>
+
+
