@@ -28,6 +28,12 @@ pipeline{
                 archive 'maven-example/**/target/*.war'
             }
         }
+        
+        stage('Docker Build') {
+            steps {
+               sh 'docker build -t sandydev/gof:latest .'
+      }
+    }
     }
     
 }
