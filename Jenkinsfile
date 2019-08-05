@@ -1,25 +1,32 @@
-pipeline {
-agent any
-stages {
-        stage('Clone sources') {
+pipeline{
+    agent any
+
+    stages{
+
+        stage('Pull Repo'){
             steps {
                 git 'https://github.com/rsandeep7/game-of-life.git'
+                
             }
         }
-        stage('Maven build') {
+
+        stage('Build'){
             steps {
-                sh 'cd maven-example; mvn -Dmaven.test.failure.ignore clean package'
+                sh 'mvn clean package'
             }
         }
-        stage('Test report') {
-            steps {
-                junit 'maven-example/**/target/surefire-reports/TEST-*.xml'
+
+        stage('Publish'){
+            steps{
+                junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
             }
+            
         }
+        
         stage('Archive') {
             steps {
                 archive 'maven-example/**/target/*.war'
             }
         }
     }
-}
+    
