@@ -36,7 +36,7 @@ pipeline{
     }
         stage('Push image') {
           steps {
-           sh docker login -u rsandeep7 -p sandeep&jayakar7 {
+              docker.withRegistry("https://hub.docker.com/r/rsandeep7/sandydev", docker) {
             sh 'docker push rsandeep7/sandydev:v1'
         }
       }
