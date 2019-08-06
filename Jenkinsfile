@@ -38,7 +38,7 @@ pipeline{
       steps{
         script {
           docker.withRegistry( 'https://hub.docker.com/r/rsandeep7/sandydev', docker) {
-            docker push rsandeep7/sandydev:v1
+            sh docker push rsandeep7/sandydev:v1
           }
         }
       }
