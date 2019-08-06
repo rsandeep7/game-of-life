@@ -36,7 +36,7 @@ pipeline{
     }
         stage('Push image') {
           steps {
-           docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+           withDockerRegistry([credentialsId: 'docker-hub', url: "https://registry.hub.docker.com"]) {
             sh 'docker push rsandeep7/sandydev:v1'
         }
       }
