@@ -31,9 +31,15 @@ pipeline{
         
         stage('Docker Build') {
             steps {
-               sh 'docker build -t sandydev/gof:latest .'
+               sh 'docker build -t rsandeep7/sandydev:v1 .'
       }
     }
+        stage('Push image') {
+          steps {
+           docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+            sh 'docker push rsandeep7/sandydev:v1'
+        }
+      }
     }
     
 }
