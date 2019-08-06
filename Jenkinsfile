@@ -34,10 +34,12 @@ pipeline{
                sh 'docker build -t rsandeep7/sandydev:v1 .'
       }
     }
-        stage('Push image') {
-          steps {
-              docker.withRegistry("https://hub.docker.com/r/rsandeep7/sandydev", docker) {
-            sh 'docker push rsandeep7/sandydev:v1'
+        stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( 'https://hub.docker.com/r/rsandeep7/sandydev', docker) {
+            docker push rsandeep7/sandydev:v1
+          }
         }
       }
     }
