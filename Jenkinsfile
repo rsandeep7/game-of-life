@@ -31,13 +31,13 @@ pipeline{
         
         stage('Docker Build') {
             steps {
-               sh 'docker build -t rsandeep7/sandydev:v2 .'
+               sh 'docker build -t rsandeep7/sandydev:v1 .'
       }
     }
         stage('Push image') {
       steps {
         withDockerRegistry([credentialsId: 'docker', url: "https://index.docker.io/v1/"]) {
-          sh 'docker push rsandeep7/sandydev:v2'
+          sh 'docker push rsandeep7/sandydev:v1'
         }
       }
     }
