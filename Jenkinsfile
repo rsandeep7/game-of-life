@@ -44,7 +44,7 @@ pipeline{
         stage('Deploy') {
         steps {
                 sh 'sudo kubectl apply -f replication.yaml'
-                sh 'sudo kubectl apply -f service.yaml'
+               
         }
     }
   } 
