@@ -41,6 +41,11 @@ pipeline{
         }
       }
     }
+        stage('Deploy') {
+        steps {
+                sh 'sudo kubectl apply replication.yaml'
+        }
+    }
   } 
 }
     
