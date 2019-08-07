@@ -15,12 +15,13 @@ spec:
       name: nginx-pod-jenkins
       labels:
         app: gof
-    containers:
-    - name: nginx-cont-jenkins
-      image: rsandeep7/sandydev:v3
-      ports:
-        containerPort: 80
-    imagePullSecrets:
+    spec:
+      containers:
+      - name: nginx-cont-jenkins
+        image: rsandeep7/sandydev:v3
+        ports:
+          containerPort: 80
+      imagePullSecrets:
       - name: doc-sec
         
 ---
