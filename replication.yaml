@@ -1,4 +1,28 @@
-      
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-rc-jenkins
+  labels:
+    app: gof
+    
+spec:
+  replicas: 3
+  selector:
+    app: gof
+  template:
+    metadata:
+      name: nginx-pod-jenkins
+      labels:
+        app: gof
+    spec:
+      containers:
+      - name: nginx-cont-jenkins
+        image: rsandeep7/sandydev:v3
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: doc-sec      
 ---
 apiVersion: v1
 kind: Service
